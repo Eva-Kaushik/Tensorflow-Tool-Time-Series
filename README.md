@@ -33,9 +33,9 @@ This tool requires basic understanding of the following concepts and frameworks
 * Keras API
 
 ## Starting your first experiment!
-See example code in [LabRunner.py](https://github.com/adventure-island/tensorlab/blob/master/LabRunner.py) to start your time series data modeling in less than 5 minutes!
+See example code in [LabRunner.py] to start your time series data modeling in less than 5 minutes!
 
-Point the value of __MODLE_FOLDER__ in [Utils.py](https://github.com/adventure-island/tensorlab/blob/master/utils/Utils.py) to a location where you want to keep all your experiment execution output, that folder will be used as the root fold for all your experiment executions. Once you start a new experiment, the following folder structure will be automatically created:
+Point the value of __MODLE_FOLDER__ in [Utils.py] to a location where you want to keep all your experiment execution output, that folder will be used as the root fold for all your experiment executions. Once you start a new experiment, the following folder structure will be automatically created:
 ```
 +-- <MODLE_FOLDER> - The root folder for all your experiments, MUST be manually created before you start any experiment execution
    | +-- 'model_id' - A simple text file containing the model/experiment ID, starting from 1
@@ -50,7 +50,7 @@ Every time you start a new experiment, the ID in the model_id file will be autom
 ## Resuming your existing experiment
 1. **Choose the model** - Double check current model ID in **model_id** file, update as necessary to point it to a specific model with which you want to resume training
 2. **Choose the checkpoint** - Under the target model training folder which is identified by the model ID you selected in previous step, retrieve the latest checkpoint ID(usually the latest checkpoint has the best performance, feel free to use different checkpoint as necessary) in sub-folder checkpoints
-3. Update following parameters in [LabRunner.py](https://github.com/adventure-island/tensorlab/blob/master/LabRunner.py)
+3. Update following parameters in [LabRunner.py]
    * Set *is_resume* to *True*
    * Set *checkpoint_id* and *initial_epoch* of the target model's **HyperParams** object to the latest checkpoint ID
    * Run LabRunner.py to resume your experiment!
@@ -58,15 +58,10 @@ Every time you start a new experiment, the ID in the model_id file will be autom
 ## Making prediction
 1. **Choose the model** -Double check current model ID in **model_id** file, update as necessary to point it to a specific model which you want to use to make prediction
 2. **Choose the checkpoint** - Under the target model training folder which is identified by the model ID you selected in previous step, retrieve the latest checkpoint ID(usually the latest checkpoint has the best performance, feel free to use different checkpoint as necessary) in sub-folder checkpoints
-3. Update following parameters in [LabRunner.py](https://github.com/adventure-island/tensorlab/blob/master/LabRunner.py)
+3. Update following parameters in [LabRunner.py]
    * Set *is_resume* to *False*
    * Set *checkpoint_id* and *initial_epoch* of the target model's **HyperParams** object to the latest checkpoint ID
    * Set the value of *steps_to_predict* to the desired prediction length
    * Run LabRunner.py to start your prediction! The results (including a graph and data file) are generated under folder **snapshots**
 
-## Tips
-* Use **Anaconda** to setup your development environment, it will make your development and model training life much easier
-* Use GPU for training when you train set gets large
-* Use external tool like **Tablaeu** to visualize model learning progress based on the data in **model_fit_<model_id>.csv**, another approach for visualization is to add callback in [Utils.py](https://github.com/adventure-island/tensorlab/blob/master/utils/Utils.py) to activate Tensowflow's **Tensorboard**, see commented code in [Utils.py](https://github.com/adventure-island/tensorlab/blob/master/utils/Utils.py)
-* Interested in invoking Amazon SageMaker DeepAR endpoint using Java and visualizing the response in real time? see **[Spring Boot Template for Amazon SageMaker DeepAR Endpoint Integration](https://github.com/adventure-island/springboot-deepar-template)**
 
